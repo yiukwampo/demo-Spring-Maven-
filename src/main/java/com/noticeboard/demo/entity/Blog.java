@@ -1,12 +1,13 @@
-package com.entity;
+package com.noticeboard.demo.entity;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
@@ -15,6 +16,7 @@ import lombok.Data;
 public class Blog {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "window_id")
     private Long windowId;
 

@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.entity.Blog;
+import com.noticeboard.demo.entity.Blog;
 import com.noticeboard.demo.service.BlogService;
+import org.springframework.context.annotation.Bean;
 
 @CrossOrigin
 @RestController
@@ -28,17 +29,17 @@ public class BlogController {
     @RequestMapping("/hello")
     public String hello() {
 
-        return "Spring Boot 緯創世界";
+        return "Spring Boot 碩網資訊世界";
 
     }
 
-   //@GetMapping("/getContentByWindowId/{windowId}")
-   //public ResponseEntity<Blog> getContentByWindowId(@PathVariable Long windowId) {
-   //    Optional<Blog> blogOp = blogService.findContentByWindowId(windowId);
-   //    if (blogOp.isPresent()) {
-   //        return ResponseEntity.ok(blogOp.get());
-   //    }
-   //    return ResponseEntity.ok(null);
-   //}
+   @RequestMapping("/getContentByWindowId/{windowId}")
+   public ResponseEntity<Blog> getContentByWindowId(@PathVariable Long windowId) {
+       Optional<Blog> blogOp = blogService.findContentByWindowId(windowId);
+       if (blogOp.isPresent()) {
+           return ResponseEntity.ok(blogOp.get());
+       }
+       return ResponseEntity.ok(null);
+   }
     
 }
