@@ -33,13 +33,30 @@ public class BlogController {
 
     }
 
-   @RequestMapping("/getContentByWindowId/{windowId}")
-   public ResponseEntity<Blog> getContentByWindowId(@PathVariable Long windowId) {
-       Optional<Blog> blogOp = blogService.findContentByWindowId(windowId);
+   @RequestMapping("/getAllBlogMessage")
+   public ResponseEntity<Iterable<Blog>> getAllBlogMessage() {
+        return ResponseEntity.ok(blogService.getAllBlogMessage());
+   }
+
+   @RequestMapping("/getContentByMessageId/{messageId}")
+   public ResponseEntity<Blog> getContentByMessageId(@PathVariable Long messageId) {
+       Optional<Blog> blogOp = blogService.findContentByMessageId(messageId);
        if (blogOp.isPresent()) {
            return ResponseEntity.ok(blogOp.get());
        }
        return ResponseEntity.ok(null);
+   }
+
+   @PostMapping("/createBlogMessage")
+   private ResponseEntity<Boolean> createBlogMessage(@RequestBody Blog blog) {
+       Blog savedBlog = blogService.createBlogMessage(blog);
+       return ResponseEntity.ok(savedBlog.getMessageId() != null);
+   }
+
+   @PostMapping("/updateBlogMessage")
+   private ResponseEntity<Boolean> updateBlogMessage(@RequestBody Blog blog) {
+       Blog savedBlog = blogService.updateBlogMessage(blog);
+       return ResponseEntity.ok(savedBlog.getMessageId() != null);
    }
     
 }
