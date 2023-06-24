@@ -26,11 +26,6 @@ import io.micrometer.common.util.StringUtils;
 @Service
 public class BlogService {
 
-     //private BlogRepository blogRepository;
-//
-     //public BlogService(BlogRepository _blogRepository) { 
-     //   this.blogRepository = _blogRepository;
-     //}
     private final Logger logger = LoggerFactory.getLogger(BlogService.class);
 
      @Autowired
