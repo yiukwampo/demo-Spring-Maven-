@@ -19,4 +19,5 @@ public interface BlogRepository extends CrudRepository<Blog, Long> {
 	@Modifying(clearAutomatically = true)
 	@Transactional
 	int deleteAllByMessageIdList(@Param("messageIdList") List<Long> messageIdList);
+    
 }
