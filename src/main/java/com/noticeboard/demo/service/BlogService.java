@@ -103,5 +103,9 @@ public class BlogService {
 
 	}
 
+     public int deleteAllByMessageIdList(List<Long> messageIdList) {
+		return blogRepository.deleteAllByMessageIdList(messageIdList);
+	}
+
 }
     

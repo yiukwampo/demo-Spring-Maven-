@@ -1,5 +1,6 @@
 package com.noticeboard.demo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,12 @@ public class BlogController {
        Blog savedBlog = blogService.updateBlogMessage(blog);
        return ResponseEntity.ok(savedBlog.getMessageId() != null);
    }
+
+   @PostMapping("/deleteAllByMessageIdList")
+   public ResponseEntity<Boolean> deleteAllByMessageIdList(@RequestBody List<Long> messageIdList) {
+       blogService.deleteAllByMessageIdList(messageIdList);
+       return ResponseEntity.ok(true);
+   }
+   
     
 }

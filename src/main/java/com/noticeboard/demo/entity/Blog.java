@@ -26,9 +26,6 @@ public class Blog {
     @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "user_type")
-    private String userType;
-
     @Column(name = "title")
     private String title;
 
