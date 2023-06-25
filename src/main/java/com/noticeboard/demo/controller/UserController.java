@@ -1,4 +1,5 @@
 package com.noticeboard.demo.controller;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.noticeboard.demo.dto.UserDropdownListDto;
 import com.noticeboard.demo.entity.User;
 import com.noticeboard.demo.service.UserService;
 
@@ -25,6 +28,11 @@ public class UserController {
             return ResponseEntity.ok(userOp.get());
         }
         return ResponseEntity.ok(null);
+    }
+
+    @RequestMapping("/getUserDropdownList")
+    public ResponseEntity<Iterable<UserDropdownListDto>> getUserDropdownList() {
+        return ResponseEntity.ok(userService.getUserDropdownList());
     }
     
 }
