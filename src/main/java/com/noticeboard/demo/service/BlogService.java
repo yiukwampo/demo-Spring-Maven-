@@ -42,9 +42,10 @@ public class BlogService {
      }
 
      @Transactional
-     public Blog createBlogMessage(Blog blog) {
+     public void createBlogMessage(Blog blog) {
 
           Blog blogNew = new Blog();
+          blogNew.setUserId(blog.getUserId());
           blogNew.setTitle(blog.getTitle());  
           blogNew.setAnnounceContent(blog.getAnnounceContent());     
           if (blog.getAnnounceDateStr() != null) {
@@ -55,8 +56,13 @@ public class BlogService {
                LocalDate dt = LocalDate.parse(blog.getExpiryDateStr(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                blogNew.setExpiryDate(dt);
           }    
-          Blog savedBlog = blogRepository.save(blogNew);
-          return savedBlog;
+          blogRepository.insertWithQuery(
+               blogNew.getUserId(),
+               blogNew.getTitle(),
+               blogNew.getAnnounceContent(),
+               blogNew.getAnnounceDate(),
+               blogNew.getExpiryDate()
+          );
 
 	}
 

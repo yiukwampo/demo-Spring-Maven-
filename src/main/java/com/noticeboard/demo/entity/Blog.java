@@ -19,8 +19,8 @@ import lombok.Data;
 public class Blog {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "message_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "message_id", updatable = false, nullable = false)
     private Long messageId;
 
     @Column(name = "user_id")

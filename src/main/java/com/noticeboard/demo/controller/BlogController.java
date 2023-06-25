@@ -50,8 +50,8 @@ public class BlogController {
 
    @PostMapping("/createBlogMessage")
    private ResponseEntity<Boolean> createBlogMessage(@RequestBody Blog blog) {
-       Blog savedBlog = blogService.createBlogMessage(blog);
-       return ResponseEntity.ok(savedBlog.getMessageId() != null);
+       blogService.createBlogMessage(blog);
+       return ResponseEntity.ok(true);
    }
 
    @PostMapping("/updateBlogMessage")
